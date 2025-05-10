@@ -6,7 +6,7 @@ import ServiceCard from './ServiceCard'; // Import the ServiceCard component
 // import serviceImage2 from '../assets/service2.jpg';
 // import serviceImage3 from '../assets/service3.jpg';
 // import serviceImage4 from '../assets/service4.jpg';
-import test from '../assets/test.png';
+import test from '../assets/convocation.jpg';
 // Add more imports for other services
 
 // Define your service data
