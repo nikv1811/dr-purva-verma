@@ -13,7 +13,7 @@ const Header = () => {
     };
 
     return (
-        <header className="shadow-md fixed top-0 left-0 w-full z-50"> {/* Fixed header at the top */}
+        <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50"> {/* Fixed header at the top */}
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                 {/* Site Title or Logo */}
                 <div className="text-xl font-bold text-gray-800">
