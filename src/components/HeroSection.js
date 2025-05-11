@@ -4,7 +4,7 @@ import convocation from '../assets/convocation.jpg';
 
 const HeroSection = () => {
     return (
-        <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
+        <div className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-gray-100">
             {/* Background image */}
             <div
                 className="absolute inset-0 bg-cover bg-center clip-diagonal"
@@ -26,31 +26,27 @@ const HeroSection = () => {
                 {/* Info Card */}
                 <div className="bg-white bg-opacity-80 rounded-2xl shadow-lg backdrop-blur-md flex flex-col">
                     {/* Card Header */}
-                    {/* Use flex justify-center to center the inline-block wrapper */}
                     <div className="px-6 py-4 md:px-8 md:py-5 border-b border-gray-300 flex justify-center">
-                        {/* Wrap heading and subheader in an inline-block flex column */}
                         <div className="inline-block flex flex-col">
                             <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 m-0 text-center">
                                 Dr Purva Verma
                             </h2>
                             {/* Subheader */}
-                            {/* Use self-end to align to the right within the flex column wrapper */}
-                            <p className="text-base md:text-lg text-gray-600 mt-1 text-right self-end">
-                                BAMS (M.D. Ayurveda)
-                                in Swasthavritta and Yoga
+                            <p className="text-base md:text-lg text-gray-600 mt-1 text-center"> {/* Centered subheader */}
+                                BAMS (M.D. Ayurveda) in Swasthavritta and Yoga
                             </p>
                         </div>
                     </div>
-                    {/* Card Body */}
-                    <div className="p-6 md:p-8 flex-grow flex items-center justify-center">
-                        <p className="text-lg md:text-xl text-gray-700 text-center">
-                            Dr. Purva Verma, a gold medallist from Sri Sri College of Ayurvedic Science,
-                            is a trusted Ayurvedic expert with 7+ years of experience. She offers
-                            personalized herbal remedies, Panchakarma detox, diet, and lifestyle
-                            guidance to treat digestive issues, chronic conditions,
-                            stress, sexual health, and more, ensuring holistic and natural
-                            healing in Kolkata.
-                        </p>
+                    {/* Card Body - With Bullet Points */}
+                    <div className="p-6 md:p-8 flex-grow"> {/* Removed flex items-center justify-center */}
+                        {/* Bullet points for qualifications and expertise */}
+                        <ul className="pl-7 list-disc list-outside text-lg md:text-xl text-gray-700 space-y-2 text-left"> {/* Styled unordered list */}
+                            <li>Ayurvedic expert with {new Date().getFullYear() - 2018}+ years of experience</li>
+                            <li>Gold medallist from Sri Sri College of Ayurvedic Science and Medical Research</li>
+                            <li>Specializations include Garbhasanskara, Naturopathy, and Nadi Parikshana</li>
+                            <li>Offers personalized Ayurvedic remedies and guidance</li>
+                            <li>Providing holistic natural healing worldwide</li>
+                        </ul>
                     </div>
                 </div>
             </div>

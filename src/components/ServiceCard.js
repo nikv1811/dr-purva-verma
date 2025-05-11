@@ -1,36 +1,35 @@
 import React, { useState } from 'react';
 
-const ServiceCard = ({ title, imageUrl, description }) => {
-    // Use a state to track if the text is shown (either by hover on desktop or tap on mobile)
+const ServiceCard = ({ title, imageUrl, description, subheader }) => {
     const [showText, setShowText] = useState(false);
 
-    // Handle hover for desktop
     const handleMouseEnter = () => {
-        // Only set to true on mouse enter
         setShowText(true);
     };
 
     const handleMouseLeave = () => {
-        // Only set to false on mouse leave
         setShowText(false);
     };
 
-    // Handle click for mobile (and desktop if preferred)
     const handleClick = () => {
-        // Toggle the state on click
         setShowText(!showText);
     };
 
     return (
         <div
-            className="relative bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer h-96 flex flex-col"
-            onMouseEnter={handleMouseEnter} // Use mouse enter for hover effect
-            onMouseLeave={handleMouseLeave} // Use mouse leave for hover effect
-            onClick={handleClick}         // Use click for tap effect (and toggle)
+            className="relative bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer h-96 flex flex-col" // h-96 for height
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
         >
             {/* Card Header */}
-            <div className="px-4 py-3 border-b border-gray-200 text-center bg-gray-50">
+            <div className="px-4 py-3 border-b border-gray-200 text-center bg-gray-50 flex flex-col">
                 <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+
+                {/* Subheader - Conditionally rendered */}
+                {subheader && (
+                    <p className="text-sm text-gray-600 mt-1">{subheader}</p>
+                )}
             </div>
 
             {/* Card Body - Image and Text */}
@@ -43,10 +42,14 @@ const ServiceCard = ({ title, imageUrl, description }) => {
                 />
 
                 {/* Text Overlay (Visible when showText is true, fades in) */}
+                {/* Removed justify-center to align content to the top */}
                 <div
-                    className={`absolute inset-0 p-4 bg-black bg-opacity-60 text-white flex items-center justify-center transition-opacity duration-500 ${showText ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 p-4 bg-black bg-opacity-60 text-white flex flex-col items-center transition-opacity duration-500 overflow-y-auto ${showText ? 'opacity-100' : 'opacity-0'}`} // Removed justify-center
                 >
-                    <p className="text-base text-center">{description}</p>
+                    {/* Text content container */}
+                    <div className="text-base text-center">
+                        {description}
+                    </div>
                 </div>
             </div>
         </div>
