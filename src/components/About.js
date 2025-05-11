@@ -9,6 +9,7 @@ const About = () => {
                     Dr. Purva Verma, a gold medallist from Sri Sri College of Ayurvedic Science and Research Hospital, is a trusted name in Ayurvedic care with over seven years of experience. Renowned for her expertise in Ayurveda, Dr. Verma offers a comprehensive range of holistic treatments aimed at promoting overall well-being. She combines her deep knowledge of Ayurveda with personalized herbal remedies, Panchakarma detox, diet counseling, and lifestyle guidance, all tailored to address a wide range of health concerns, including digestive issues, chronic conditions, stress, sexual health, and preventive care. For those searching for an “Ayurveda doctor near me” in Kolkata, Dr. Purva Verma stands out as the top choice for authentic and natural healing.
                 </p>
             </div>
+            <div className="w-2/3 h-px bg-gray-300 mx-auto mt-12"></div> {/* Added separator */}
         </section>
     );
 };
