@@ -8,6 +8,8 @@ import Treatments from './components/Treatements';
 // import Locations from './components/Locations';
 // import OnlineConsultation from './components/OnlineConsultation';
 import Consultation from './components/Consultations';
+import Testimonial from './components/Testimonials';
+import InstagramPosts from './components/InstagramFeed';
 
 function App() {
   return (
@@ -15,14 +17,12 @@ function App() {
       <Header />
       <main className="pt-16"> {/* Adjust padding based on header height */}
         <HeroSection />
-
         <About /> {/* Make sure this has id="about" */}
-
         <Treatments /> {/* Treatments section */}
         <Services /> {/* Services section */}
-        {/* <OnlineConsultation />
-        <Locations /> */}
         <Consultation />
+        <Testimonial />
+        <InstagramPosts />
       </main>
       <Footer />
     </div>

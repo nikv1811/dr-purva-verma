@@ -1,14 +1,5 @@
 import React from 'react';
 
-// You will need to find and import the logos for each social media platform.
-// Place your logo files in a directory like src/assets/social-icons/
-// Example imports:
-// import instagramLogo from '../assets/social-icons/instagram.png';
-// import linkedinLogo from '../assets/social-icons/linkedin.png';
-// import whatsappLogo from '../assets/social-icons/whatsapp.png';
-// import emailIcon from '../assets/social-icons/email.png';
-
-
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -20,7 +11,7 @@ const Footer = () => {
                 <div className="flex space-x-6 mb-4 md:mb-0"> {/* Flex container for icons, spacing, margin bottom on mobile */}
                     {/* Instagram Link */}
                     <a
-                        href="[Your Instagram Link]" // Replace with your actual Instagram URL
+                        href="https://www.instagram.com/_swasthya_veda" // Replace with your actual Instagram URL
                         target="_blank" // Open in a new tab
                         rel="noopener noreferrer" // Security best practice for target="_blank"
                         className="hover:text-white transition duration-300" // Hover effect
@@ -33,7 +24,7 @@ const Footer = () => {
 
                     {/* LinkedIn Link */}
                     <a
-                        href="[Your LinkedIn Link]" // Replace with your actual LinkedIn URL
+                        href="https://www.linkedin.com/in/dr-purva-verma/" // Replace with your actual LinkedIn URL
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition duration-300"
@@ -45,28 +36,23 @@ const Footer = () => {
                     </a>
 
                     {/* WhatsApp Link */}
-                    {/* Note: WhatsApp links usually use the tel: or https://wa.me/ format */}
                     <a
                         href="[Your WhatsApp Link or Phone Number]" // Replace with your actual WhatsApp link (e.g., https://wa.me/yourphonenumber)
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-white transition duration-300"
                     >
-                        {/* Replace with your WhatsApp logo import */}
-                        {/* <img src={whatsappLogo} alt="WhatsApp" className="w-6 h-6" /> */}
-                        {/* Placeholder for WhatsApp icon - replace with your image or SVG */}
-                        <svg className="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339.7 55.8 283.2 32 224.1 32c-102 0-185.6 83.6-185.6 185.6 0 34 9.5 67.1 27.8 96.2L32 480l100.9-26.5c27.3 14.9 58 22.7 90.1 22.7h.1c102 0 185.6-83.6 185.6-185.6 0-52.7-21.6-101.4-56.1-135.9zM224.1 448.1c-25.6 0-51.1-7.7-73.1-22.4l-5.3-3.1-54.1 14.2 14.5-52.7-3.5-5.6c-15.6-25-23.9-53-23.9-81.1 0-84 68.4-152.4 152.4-152.4 40.5 0 78.3 15.8 106.8 44.3s44.3 66.3 44.3 106.8c0 84-68.4 152.4-152.4 152.4zm96.1-119.1s-4.7-2.4-6.9-3.5c-7.6-3.7-18.7-6.9-21.7-7.4-3-.5-6.4-.2-9.2 3.5-2.7 3.7-7.6 9.5-9.2 11.5s-3.3 4.3-6.2 5.4c-2.8 1.1-5.9 1.5-9-.5-3.1-1.5-13-4.8-24.7-15.3-9.1-7.9-15.1-17.7-16.9-20.7-1.7-3-.1-4.4 1-6.2 1.9-1.7 4.3-4.8 6.4-7.2 2-2.3 2.7-4 4.3-7.2 1.7-3.2 1.2-6-1.4-8.9-2.7-3-6.2-7.7-9.4-10.9s-7.6-3.5-12.2-3.5c-4.7-.1-9.9.6-15.1.6s-11.5-1.9-17.4 5.9c-5.8 7.9-22.4 21.8-22.4 53.9 0 32 23.1 61.6 26.2 65.7 3.1 4.1 44.3 71.2 107.5 98.6 31.3 13.4 44.9 17.8 59.8 17.8 14.8 0 28.6-5.6 39.3-17.1 10.7-11.5 10.7-21.3 7.6-22.9s-7.6-1.5-16.6-5.8c-8.9-4.3-21-13-24.2-17.8z" /></svg>
+                        {/* Updated WhatsApp icon SVG path */}
+                        <svg className="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M380.9 97.1C339.7 55.8 283.2 32 224.1 32c-102 0-185.6 83.6-185.6 185.6 0 34 9.5 67.1 27.8 96.2L32 480l100.9-26.5c27.3 14.9 58 22.7 90.1 22.7h.1c102 0 185.6-83.6 185.6-185.6 0-52.7-21.6-101.4-56.1-135.9zM224.1 448.1c-25.6 0-51.1-7.7-73.1-22.4l-5.3-3.1-54.1 14.2 14.5-52.7-3.5-5.6c-15.6-25-23.9-53-23.9-81.1 0-84 68.4-152.4 152.4-152.4 40.5 0 78.3 15.8 106.8 44.3s44.3 66.3 44.3 106.8c0 84-68.4 152.4-152.4 152.4zm96.1-119.1s-4.7-2.4-6.9-3.5c-7.6-3.7-18.7-6.9-21.7-7.4c-3-.5-6.4-.2-9.2 3.5-2.7 3.7-7.6 9.5-9.2 11.5s-3.3 4.3-6.2 5.4c-2.8 1.1-5.9 1.5-9-.5-3.1-1.5-13-4.8-24.7-15.3-9.1-7.9-15.1-17.7-16.9-20.7c-1.7-3-.1-4.4 1-6.2 1.9-1.7 4.3-4.8 6.4-7.2 2-2.3 2.7-4 4.3-7.2 1.7-3.2 1.2-6-1.4-8.9c-2.7-3-6.2-7.7-9.4-10.9s-7.6-3.5-12.2-3.5c-4.7-.1-9.9.6-15.1.6s-11.5-1.9-17.4 5.9c-5.8 7.9-22.4 21.8-22.4 53.9 0 32 23.1 61.6 26.2 65.7 3.1 4.1 44.3 71.2 107.5 98.6 31.3 13.4 44.9 17.8 59.8 17.8 14.8 0 28.6-5.6 39.3-17.1 10.7-11.5 10.7-21.3 7.6-22.9s-7.6-1.5-16.6-5.8c-8.9-4.3-21-13-24.2-17.8z" /></svg>
                     </a>
 
                     {/* Email Link */}
                     <a
-                        href="mailto:[Your Email Address]" // Replace with your actual email address
+                        href="mailto:swasthyaved@gmail.com" // Replace with your actual email address
                         className="hover:text-white transition duration-300"
                     >
-                        {/* Replace with your Email icon import */}
-                        {/* <img src={emailIcon} alt="Email" className="w-6 h-6" /> */}
-                        {/* Placeholder for Email icon - replace with your image or SVG */}
-                        <svg className="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 8.1-29 8.1h-352c-17.3 0-32.1-13.3-34.4-30.5L.9 117.6c-2.6-17.8 3.1-36.4 17.8-47.4l352-256c13.9-10.1 33.9-10.1 47.8 0l64 48zM432 117.6l-274.8 199.4c-7.8 5.7-17.9 8.9-28.2 8.9s-20.4-3.2-28.2-8.9L48 117.6l352-256c4.5-3.3 10.4-4.3 16.3-2.7 6 1.6 11.1 5.5 14.2 10.6l64 48c.8.6 1.5 1.3 2.2 2.1L432 117.6zM12.5 121.7L96 464l352-256-64-48L12.5 121.7z" /></svg>
+                        {/* More accurate Email icon SVG path */}
+                        <svg className="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM464 368V182.3L309.8 317.5c-23.4 19.2-53.7 19.2-77.1 0L48 182.3V368c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" /></svg>
                     </a>
                 </div>
 
