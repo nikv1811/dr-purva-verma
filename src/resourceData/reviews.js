@@ -1,0 +1,22 @@
+// src/data/reviews.js
+
+const reviews = [
+    { author: "Pragya Jain", text: `I had a truly positive experience with Dr. Purva, and I'm grateful for the holistic approach they took toward my health. From the very first consultation, I felt heard, understood, and cared for. The doctor took the time to thoroughly assess my concerns, explained the root causes from an Ayurvedic perspective, and prescribed a personalized treatment plan, including herbal remedies, dietary advice, and lifestyle changes.
+            What stood out to me the most was their calm and compassionate nature, along with a deep knowledge of traditional Ayurvedic practices. I began to see real improvement in my condition within a few weeks without any side effects, which is something I value deeply`, rating: 5, date: "2024-01-20" },
+    { author: "Neha Verma", text: `I consulted Dr Purva for my 73 years old mother who is suffering with diabetes and multiple other age related ailments. And I must say that her treatment is very effective. It's been just 2 weeks in treatment, but my mother is already feeling better and energetic. Thanks you Dr for your help and support.`, rating: 4, date: "2024-02-15" },
+    { author: "Yogesh Pandey", text: `Dr. Purva is one of the best Ayurvedic doctor in Kolkata. She helped me in treatment of Psoriasis and proactively suggested lifestyle changes to restrict the relapse of disease. She listens to each and every problem very carefully and provides the best medical advice. I would recommend her any skin related ailments and lifestyle changes.`, rating: 5, date: "2024-03-10" },
+    { author: "Ashok Kumar Roy", text: `Consulted with her regarding my long standing health issues viz. Vertigo, digestive disorders and problem related to nerve. She addressed the two problems effectively with medicines and therapy. Still continuing treatment. She paid due attention to all my problems very patiently and also quarried regarding improvement.`, rating: 5, date: "2024-04-01" },
+    { author: "Chameli Mukharjee", text: `I am suffering from high IGE problem having skin irritation with redness,dust allergy for last two years.I have visited Dr purva verma  for her consultation as I did not  receive much benefit from allopathy anti histamine medicine . Dr purva recommend me oral medicine and kerala massage for 7 days...now I am better than before .I hope under her  guidence and treatment I"ll  be able to get rid of allergy. Thank you Dr verma`, rating: 5, date: "2024-05-22" },
+    { author: "Swaroop Vyas", text: `I consulted Dr. Purva Verma for my 57-year-old mother, who had been suffering from persistent muscle cramps. After trying various allopathic treatments and multivitamins with little success, we decided to switch to Ayurvedic care.
+
+Dr. Purva took the time to listen to my mother’s concerns, thoroughly examined her reports, and recommended several blood tests to identify any deficiencies. The results allowed her to prescribe an effective treatment plan. Remarkably, my mother experienced significant relief just two days after starting the medicine.
+
+Dr. Purva is hands down the best Ayurvedic doctor we've consulted. We now turn to her for all our family’s health issues. Highly recommend!`, rating: 4, date: "2024-06-18" },
+    { author: "Amit Sharma", text: `Dr Purva is treating me diabetes and there is a lot of improvement. I recommend, for those who are having issues related to Diabetes may visit once. Thanks to Dr Purva Verma`, rating: 5, date: "2024-07-05" },
+    { author: "Sukriti Awasthi", text: `I have consulted Dr Purva for issues related to my pregnancy and skin. She calmly listened to my problems and provided the solution. She is approachable and very good in her craft.
+I would recommend her to everyone who is looking for ayurvedic treatment.`, rating: 4, date: "2024-08-12" },
+    { author: "Sareema Banerjee", text: `My mother has been suffering from chronic pain in her legs and mobility issues over the past couple of years. We visited Dr Verma for her consultation as we did not receive much benefit from the regular allopathic treatments. Dr.Verma recommended a combination of oral medication and traditional kerala ayurveda massages, and we have seen substantial improvement in my mother's health within 2 weeks. We are optimistic that with regular rechecks and a disciplined approach as per guidance from Dr.Verma, my mother will feel much better.
+Thank you doctor :)`, rating: 5, date: "2024-09-29" },
+];
+
+export default reviews;
