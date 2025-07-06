@@ -5,11 +5,9 @@ import Header from './components/Header';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import Treatments from './components/Treatements';
-// import Locations from './components/Locations';
-// import OnlineConsultation from './components/OnlineConsultation';
 import Consultation from './components/Consultations';
-import Testimonial from './components/Testimonials';
-import InstagramPosts from './components/InstagramFeed';
+// import InstagramPosts from './components/InstagramFeed';
+import Testimonial from './components/Testimonial';
 
 function App() {
   return (
@@ -22,7 +20,7 @@ function App() {
         <Services /> {/* Services section */}
         <Consultation />
         <Testimonial />
-        <InstagramPosts />
+        {/* <InstagramPosts /> */}
       </main>
       <Footer />
     </div>

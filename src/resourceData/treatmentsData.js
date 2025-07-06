@@ -3,6 +3,7 @@ import leechtherapy from '../assets/service/leechthreapy.png';
 import nadiparikshana from '../assets/service/nadiparikshan.png';
 import swarnaprashana from '../assets/service/swarnaprashan.jpg';
 import siravyadha from '../assets/service/siravyadha.png';
+// import viddhakarma from '../assets/service/viddhakarma';
 
 // Define and export the data array with images directly assigned
 const treatmentsData = [
@@ -33,6 +34,33 @@ const treatmentsData = [
         imageUrl: siravyadha, // Assign the imported image directly
         subheader: 'Ayurvedic bloodletting technique',
         description: `Siravyadha, an ancient Ayurvedic bloodletting technique, is a time-tested method to purify the blood and balance the body’s doshas. This specialized procedure targets deep-seated toxins and is especially effective in treating chronic skin conditions, inflammatory disorders, and circulatory issues. By carefully releasing impure blood from selected veins, Siravyadha not only detoxifies the system but also enhances oxygenation, reduces pain, and supports immune function. With Dr. Purva Verma’s personalized care, Siravyadha is safely adapted to suit each individual’s constitution and health concerns. Whether you're struggling with stubborn acne, migraines, varicose veins, or general toxin build-up, this ancient technique offers natural and sustainable relief. Over time, patients often report clearer skin, improved energy, and better overall well-being. Trust Dr. Verma, the best Ayurveda Practitioner in Kolkata, to guide you through this potent healing therapy. If you're seeking a holistic way to cleanse your blood, relieve chronic ailments, and revitalize your health, Siravyadha may be your ideal solution.`,
+    },
+    {
+        id: 9,
+        title: 'Viddhakarma',
+        imageUrl: siravyadha, // Assign the imported image directly
+        subheader: 'Ayurvedic Accupuncture technique',
+        description: `Viddhakarma is a minimally invasive Ayurvedic technique that involves precise pricking of specific points on the body with a fine, sterilized needle. It is similar to modern dry needling or acupuncture but deeply rooted in Ayurvedic Marma Chikitsa (vital point therapy).
+
+How does it help?
+
+Instantly relieves pain & muscle spasms
+
+Improves blood circulation to affected areas
+
+Reduces inflammation naturally
+
+Activates the body's self-healing mechanism
+
+Effective for back pain, joint disorders, nerve compression & more!
+
+Patients often feel significant relief immediately after the session, making Viddhakarma a trusted choice for pain management without surgery or heavy painkillers.
+
+management without surgery or heavy painkillers.
+
+Visit us in Kolkata and take your first step towards a pain-free life!
+
+Book your consultation today and discover the power of authentic Ayurveda.`,
     }
 ];
 
