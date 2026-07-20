@@ -161,8 +161,13 @@ const Header = () => {
                     </svg> */}
 
 
-                    <div className="text-xl font-bold text-gray-800"> {/* Text next to the logo */}
-                        Dr. Purva Verma
+                    <div className="flex flex-col leading-tight"> {/* Text next to the logo */}
+                        <div className="text-xl font-bold text-gray-800">
+                            Dr. Purva Verma
+                        </div>
+                        <div className="text-sm font-medium text-gray-500">
+                            Ayurvedic Doctor in Kolkata
+                        </div>
                     </div>
                 </div>
 
