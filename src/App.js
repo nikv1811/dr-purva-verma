@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Footer from './components/Footer';
 import Treatments from './components/Treatements';
 import Consultation from './components/Consultations';
+import FAQ from './components/FAQ';
 // import InstagramPosts from './components/InstagramFeed';
 import Testimonial from './components/Testimonial';
 
@@ -19,6 +20,7 @@ function App() {
         <Treatments /> {/* Treatments section */}
         <Services /> {/* Services section */}
         <Consultation />
+        <FAQ />
         <Testimonial />
         {/* <InstagramPosts /> */}
       </main>
