@@ -29,7 +29,7 @@ const HeroSection = () => {
                     <div className="px-6 py-4 md:px-8 md:py-5 border-b border-gray-300 flex justify-center">
                         <div className="inline-block flex flex-col">
                             <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 m-0 text-center">
-                                Dr. Purva Verma - Ayurvedic Doctor in Lake Town, Kolkata
+                                Dr. Purva Verma
                             </h1>
                             {/* Subheader */}
                             <p className="text-base md:text-lg font-semibold text-gray-700 mt-1 text-center">
