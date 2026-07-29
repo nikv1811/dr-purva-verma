@@ -28,11 +28,14 @@ const HeroSection = () => {
                     {/* Card Header */}
                     <div className="px-6 py-4 md:px-8 md:py-5 border-b border-gray-300 flex justify-center">
                         <div className="inline-block flex flex-col">
-                            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 m-0 text-center">
-                                Dr Purva Verma
-                            </h2>
+                            <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 m-0 text-center">
+                                Dr. Purva Verma - Ayurvedic Doctor in Lake Town, Kolkata
+                            </h1>
                             {/* Subheader */}
-                            <p className="text-base md:text-lg text-gray-600 mt-1 text-center"> {/* Centered subheader */}
+                            <p className="text-base md:text-lg font-semibold text-gray-700 mt-1 text-center">
+                                Ayurvedic Doctor in Kolkata
+                            </p>
+                            <p className="text-base md:text-lg text-gray-600 mt-1 text-center">
                                 BAMS (M.D. Ayurveda) in Swasthavritta and Yoga
                             </p>
                         </div>

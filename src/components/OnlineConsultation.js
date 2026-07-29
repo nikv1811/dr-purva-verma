@@ -6,7 +6,7 @@ const OnlineConsultation = () => {
 
     return (
         // <section id="onlineconsultation" className=" px-4 bg-gray-100">
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 mx-auto flex flex-col items-center gap-8">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 flex flex-col items-center gap-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center w-full">Book your consultation with us (worldwide)</h2>
             {/* Left Card: Google Forms Embed */}
             <div className="w-full rounded-lg shadow-lg overflow-hidden">
