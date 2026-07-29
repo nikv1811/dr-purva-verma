@@ -1,8 +1,12 @@
 import React from 'react';
 
 const MapCard = ({ title, mapEmbed, address, timings, description }) => {
+    const normalizedMapEmbed = mapEmbed
+        .replace(/width="[^"]*"/g, 'width="100%"')
+        .replace(/style="[^"]*"/g, 'style="border:0;"');
+
     return (
-        <div className="bg-white bg-opacity-80 rounded-2xl shadow-lg backdrop-blur-md">
+        <div className="w-full bg-white bg-opacity-80 rounded-2xl shadow-lg backdrop-blur-md">
             {/* Card Header */}
             <div className="px-6 py-4 md:px-8 md:py-5 border-b border-gray-300">
                 <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
@@ -10,8 +14,24 @@ const MapCard = ({ title, mapEmbed, address, timings, description }) => {
             {/* Card Body */}
             <div className="p-6 md:p-8">
                 {/* Google Maps Embed */}
-                <div className="mb-6 rounded-lg overflow-hidden shadow-md" dangerouslySetInnerHTML={{ __html: mapEmbed }}>
+                <div className="map-embed mb-6 rounded-lg overflow-hidden shadow-md w-full">
+                    <div className="w-full max-w-full overflow-hidden" dangerouslySetInnerHTML={{ __html: normalizedMapEmbed }} />
                 </div>
+                <style>{`
+                    .map-embed iframe {
+                        width: 100% !important;
+                        min-width: 100% !important;
+                        max-width: 100% !important;
+                        height: 400px !important;
+                    }
+                    @media (max-width: 767px) {
+                        .map-embed iframe {
+                            width: auto !important;
+                            min-width: auto !important;
+                            max-width: 100% !important;
+                        }
+                    }
+                `}</style>
 
                 {/* Timings */}
                 {timings && (

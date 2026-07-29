@@ -161,8 +161,13 @@ const Header = () => {
                     </svg> */}
 
 
-                    <div className="text-xl font-bold text-gray-800"> {/* Text next to the logo */}
-                        Dr. Purva Verma
+                    <div className="flex flex-col leading-tight"> {/* Text next to the logo */}
+                        <div className="text-xl font-bold text-gray-800">
+                            Dr. Purva Verma
+                        </div>
+                        <div className="text-sm font-medium text-gray-500">
+                            Ayurvedic Doctor in Kolkata
+                        </div>
                     </div>
                 </div>
 
@@ -171,6 +176,7 @@ const Header = () => {
                     <a href="#home" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Home</a>
                     <a href="#about" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>About</a>
                     <a href="#services" className="text-gray-600 hover:text-blue-600 transition duration-300">Services</a> {/* Added Services link */}
+                    <a href="#faq" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>FAQ</a>
                     <a href="#contact" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
                     <a href="#order-medicine" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Order Medicine</a>
                 </nav>
@@ -192,6 +198,7 @@ const Header = () => {
                         <a href="#home" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Home</a>
                         <a href="#about" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>About</a>
                         <a href="#services" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Services</a> {/* Added Services link */}
+                        <a href="#faq" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>FAQ</a>
                         <a href="#contact" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
                         <a href="#order-medicine" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Order Medicine</a>
                     </div>
