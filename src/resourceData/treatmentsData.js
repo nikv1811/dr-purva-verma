@@ -1,8 +1,8 @@
 // Import images directly in the data file
-import leechtherapy from '../assets/service/leechthreapy.png';
-import nadiparikshana from '../assets/service/nadiparikshan.png';
-import swarnaprashana from '../assets/service/swarnaprashan.jpg';
-import siravyadha from '../assets/service/siravyadha.png';
+// import leechtherapy from '../assets/service/leechthreapy.png';
+// import nadiparikshana from '../assets/service/nadiparikshan.png';
+// import swarnaprashana from '../assets/service/swarnaprashan.jpg';
+// import siravyadha from '../assets/service/siravyadha.png';
 // import viddhakarma from '../assets/service/viddhakarma';
 
 // Define and export the data array with images directly assigned

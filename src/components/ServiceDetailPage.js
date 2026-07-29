@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import serviceGroupsData from '../resourceData/serviceGroups';
+import servicesData from '../resourceData/servicesData';
 
 const ServiceDetailPage = () => {
     const { categorySlug, serviceSlug } = useParams();
@@ -10,7 +11,8 @@ const ServiceDetailPage = () => {
         return null;
     }
 
-    const service = group.services.find((item) => item.slug === serviceSlug);
+    const service = servicesData.find((item) => item.slug === serviceSlug && item.groupSlug === group.slug);
+    const serviceImages = service?.images || [];
 
     if (!service) {
         return (
@@ -34,7 +36,25 @@ const ServiceDetailPage = () => {
 
                 <div className="mt-8 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
                     <h1 className="text-4xl font-bold text-gray-800">{service.title}</h1>
-                    <p className="mt-4 text-lg text-gray-600 leading-relaxed">{service.description}</p>
+
+                    <p className="mt-6 text-lg text-gray-600 leading-relaxed">{service.description}</p>
+
+                    {serviceImages.length > 0 && (
+                        <div className="mt-8">
+                            <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth">
+                                {serviceImages.map((image, index) => (
+                                    <div key={`${service.slug}-${index}`} className="flex-shrink-0 w-full sm:w-[calc(50%-0.5rem)] snap-center">
+                                        <img
+                                            src={image}
+                                            alt={`${service.title} ${index + 1}`}
+                                            className="h-[44rem] w-full rounded-2xl object-contain bg-gray-50 shadow-sm"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {service.highlights?.length > 0 && (
                         <div className="mt-8">
