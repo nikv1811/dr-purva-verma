@@ -7,7 +7,7 @@ const Services = () => {
         <section id="services" className="py-16 px-4 bg-gray-100">
             <div className="container mx-auto">
                 <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">Our Services</h2>
-                <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                <p className="text-lg text-gray-600 text-justify mb-12 max-w-3xl mx-auto">
                     Explore our main service categories. Each group opens to a curated list of treatment options offered by Dr. Purva Verma.
                 </p>
 
