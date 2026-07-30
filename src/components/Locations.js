@@ -3,19 +3,18 @@ import locationsData from '../assets/locations/locations.json';
 
 const Locations = () => {
     return (
-        // Changed 'max-w-6xl' to 'container'
-        <div className='relative z-10 w-full max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 gap-8 md:gap-16'>
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center w-full">Or visit us at...</h2>
-            {locationsData.map((location) => (
-                <MapCard
-                    key={location.id}
-                    title={location.title}
-                    mapEmbed={location.mapEmbed}
-                    address={location.address}
-                    timings={location.timings}
-                    description={location.description}
-                />
-            ))}
+        <div className='relative z-10 w-full h-full'>
+            <div className="grid h-full grid-cols-1 gap-8 md:gap-16">
+                {locationsData.map((location) => (
+                    <MapCard
+                        key={location.id}
+                        title={location.title}
+                        mapEmbed={location.mapEmbed}
+                        address={location.address}
+                        description={location.description}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

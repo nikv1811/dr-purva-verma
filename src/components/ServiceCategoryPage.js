@@ -32,7 +32,7 @@ const ServiceCategoryPage = () => {
 
                 <div className="mt-8">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-800">{group.title}</h1>
-                    <p className="mt-4 text-lg text-gray-600 leading-relaxed">{group.description}</p>
+                    <p className="mt-4 text-lg text-gray-600 leading-relaxed text-justify">{group.description}</p>
                 </div>
 
                 <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
