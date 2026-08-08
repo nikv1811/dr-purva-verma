@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import serviceGroupsData from '../resourceData/serviceGroups';
+import servicesData from '../resourceData/servicesData';
 
 const ServiceCategoryPage = () => {
     const { categorySlug } = useParams();
@@ -20,6 +21,8 @@ const ServiceCategoryPage = () => {
         );
     }
 
+    const groupServices = servicesData.filter((service) => service.groupSlug === group.slug);
+
     return (
         <section className="py-20 px-4 bg-gray-50 min-h-screen">
             <div className="max-w-6xl mx-auto">
@@ -29,11 +32,11 @@ const ServiceCategoryPage = () => {
 
                 <div className="mt-8">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-800">{group.title}</h1>
-                    <p className="mt-4 text-lg text-gray-600 leading-relaxed">{group.description}</p>
+                    <p className="mt-4 text-lg text-gray-600 leading-relaxed text-justify">{group.description}</p>
                 </div>
 
                 <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                    {group.services.map((service) => (
+                    {groupServices.map((service) => (
                         <Link key={service.slug} to={`/services/${group.slug}/${service.slug}`} className="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition">
                             <div className="flex h-full flex-col">
                                 <div>
