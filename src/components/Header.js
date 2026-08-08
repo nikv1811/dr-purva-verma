@@ -177,7 +177,7 @@ const Header = () => {
                     <a href="#about" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>About</a>
                     <a href="#services" className="text-gray-600 hover:text-blue-600 transition duration-300">Services</a> {/* Added Services link */}
                     <a href="#faq" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>FAQ</a>
-                    <a href="#contact" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
+                    <a href="#consultations" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
                     <a href="#order-medicine" className="text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Order Medicine</a>
                 </nav>
 
@@ -199,7 +199,7 @@ const Header = () => {
                         <a href="#about" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>About</a>
                         <a href="#services" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Services</a> {/* Added Services link */}
                         <a href="#faq" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>FAQ</a>
-                        <a href="#contact" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
+                        <a href="#consultations" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Contact</a>
                         <a href="#order-medicine" className="block text-gray-600 hover:text-blue-600 transition duration-300" onClick={closeMenu}>Order Medicine</a>
                     </div>
                 </nav>
