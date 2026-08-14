@@ -1,14 +1,17 @@
 const { OAuth2Client } = require('google-auth-library');
 const axios = require('axios');
+const { connectLambda, getStore } = require('@netlify/blobs');
 
 const fallbackReviews = require('../../src/resourceData/reviews');
 
 const CACHE_KEY = 'google_reviews_cache';
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-const getStoreSafely = () => {
+const getStoreSafely = (event = {}) => {
   try {
-    const { getStore } = require('@netlify/blobs');
+    if (typeof connectLambda === 'function' && event && event.blobs) {
+      connectLambda(event);
+    }
     return getStore('reviews-store');
   } catch (error) {
     console.warn('Netlify Blobs not configured; using direct fetch / fallback mode.', error.message);
@@ -47,7 +50,7 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const store = getStoreSafely();
+    const store = getStoreSafely(event);
     const forceRefresh = event.queryStringParameters && event.queryStringParameters.refresh === 'true';
 
     // 1. Check existing 24-hr cache when a Netlify Blobs store is configured
@@ -158,7 +161,7 @@ exports.handler = async function (event, context) {
     console.error('Error fetching reviews:', error.response?.data || error.message);
 
     // Fallback: use stale cache when available, otherwise return local published reviews
-    const store = getStoreSafely();
+    const store = getStoreSafely(event);
 
     if (store) {
       try {
