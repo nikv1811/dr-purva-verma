@@ -19,7 +19,6 @@ const normalizeReview = (review, index) => {
 
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -35,8 +34,6 @@ const Testimonial = () => {
             } catch (error) {
                 console.error('Error loading reviews:', error);
                 setReviews([]);
-            } finally {
-                setLoading(false);
             }
         };
 
