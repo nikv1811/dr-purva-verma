@@ -141,7 +141,6 @@ exports.handler = async function (event, context) {
   } catch (error) {
     console.error('Error fetching reviews:', error.response?.data || error.message);
 
-    // Fallback: use stale cache when available, otherwise return local published reviews
     const store = getStoreSafely(event);
 
     if (store) {
