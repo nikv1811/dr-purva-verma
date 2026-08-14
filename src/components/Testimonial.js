@@ -69,17 +69,13 @@ const Testimonial = () => {
                         border: transparent;
                       }
                     `}</style>
-                    {!loading && reviews.length === 0 ? (
-                        <p className="text-gray-500 text-center w-full">No reviews available right now.</p>
-                    ) : (
-                        reviews.map((review, index) => (
-                            <TestimonialCard
-                                key={`${review.author}-${index}`}
-                                review={review}
-                                index={index}
-                            />
-                        ))
-                    )}
+                    {reviews.map((review, index) => (
+                        <TestimonialCard
+                            key={`${review.author}-${index}`}
+                            review={review}
+                            index={index}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
