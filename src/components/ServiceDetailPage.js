@@ -38,7 +38,6 @@ const ServiceDetailPage = () => {
                     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
                         <div className="order-2 lg:order-1">
                             <h1 className="text-4xl font-bold text-gray-800">{service.title}</h1>
-
                             <p className="mt-6 text-lg text-gray-600 leading-relaxed text-justify">{service.description}</p>
 
                             {service.highlights?.length > 0 && (
