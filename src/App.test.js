@@ -31,4 +31,14 @@ describe('Testimonial', () => {
 
     expect(await screen.findByText('Alice Johnson')).toBeInTheDocument();
   });
+
+  test('renders no reviews when the Netlify function fails', async () => {
+    global.fetch = jest.fn().mockRejectedValue(new Error('network down'));
+
+    render(<Testimonial />);
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Pragya Jain|Alice Johnson/i)).not.toBeInTheDocument();
+    });
+  });
 });

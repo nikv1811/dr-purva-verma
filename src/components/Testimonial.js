@@ -19,7 +19,6 @@ const normalizeReview = (review, index) => {
 
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -35,8 +34,6 @@ const Testimonial = () => {
             } catch (error) {
                 console.error('Error loading reviews:', error);
                 setReviews([]);
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -69,17 +66,13 @@ const Testimonial = () => {
                         border: transparent;
                       }
                     `}</style>
-                    {!loading && reviews.length === 0 ? (
-                        <p className="text-gray-500 text-center w-full">No reviews available right now.</p>
-                    ) : (
-                        reviews.map((review, index) => (
-                            <TestimonialCard
-                                key={`${review.author}-${index}`}
-                                review={review}
-                                index={index}
-                            />
-                        ))
-                    )}
+                    {reviews.map((review, index) => (
+                        <TestimonialCard
+                            key={`${review.author}-${index}`}
+                            review={review}
+                            index={index}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

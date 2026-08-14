@@ -2,8 +2,6 @@ const { OAuth2Client } = require('google-auth-library');
 const axios = require('axios');
 const { connectLambda, getStore } = require('@netlify/blobs');
 
-const fallbackReviews = require('../../src/resourceData/reviews');
-
 const CACHE_KEY = 'google_reviews_cache';
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -17,23 +15,6 @@ const getStoreSafely = (event = {}) => {
     console.warn('Netlify Blobs not configured; using direct fetch / fallback mode.', error.message);
     return null;
   }
-};
-
-const mapFallbackReviews = () => {
-  const reviews = Array.isArray(fallbackReviews) ? fallbackReviews : [];
-
-  return {
-    reviews: reviews.map((review, index) => ({
-      reviewer: { displayName: review.author || `Customer ${index + 1}` },
-      comment: review.text || 'No review text provided.',
-      starRating: { value: review.rating || 5 },
-      createTime: review.date ? new Date(review.date).toISOString() : new Date().toISOString(),
-    })),
-    averageRating: reviews.length
-      ? reviews.reduce((sum, review) => sum + (Number(review.rating) || 0), 0) / reviews.length
-      : 0,
-    totalReviewCount: reviews.length,
-  };
 };
 
 exports.handler = async function (event, context) {
@@ -160,7 +141,6 @@ exports.handler = async function (event, context) {
   } catch (error) {
     console.error('Error fetching reviews:', error.response?.data || error.message);
 
-    // Fallback: use stale cache when available, otherwise return local published reviews
     const store = getStoreSafely(event);
 
     if (store) {
@@ -183,17 +163,18 @@ exports.handler = async function (event, context) {
       }
     }
 
-    const localFallback = mapFallbackReviews();
-    console.warn('Serving local fallback review data because Google reviews are unavailable.');
+    console.warn('Google reviews are unavailable; no local fallback is enabled.');
 
     return {
-      statusCode: 200,
+      statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'X-Cache': 'LOCAL-FALLBACK',
       },
-      body: JSON.stringify(localFallback),
+      body: JSON.stringify({
+        error: 'Failed to retrieve reviews',
+        details: error.response?.data || error.message,
+      }),
     };
   }
 };
