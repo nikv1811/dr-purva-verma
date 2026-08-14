@@ -1,0 +1,9 @@
+[build]
+  publish = "build"
+
+[functions]
+  directory = "netlify/functions"
+
+[[scheduled.functions]]
+  path = "/.netlify/functions/refresh-reviews"
+  schedule = "0 0 * * *"
