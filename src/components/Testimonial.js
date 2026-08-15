@@ -3,15 +3,28 @@ import React, { useEffect, useState } from 'react';
 import TestimonialCard from './TestimonialCard';
 
 const getReviewRating = (review) => {
+    const starEnumMap = {
+        ONE: 1,
+        TWO: 2,
+        THREE: 3,
+        FOUR: 4,
+        FIVE: 5,
+    };
+
     const candidates = [
         review?.starRating?.value,
+        review?.starRating,
         review?.rating,
         review?.ratingValue,
         review?.score,
-        review?.starRating,
+        review?.stars,
     ];
 
     for (const candidate of candidates) {
+        if (typeof candidate === 'string' && starEnumMap[candidate.toUpperCase()]) {
+            return Math.min(5, Math.max(0, starEnumMap[candidate.toUpperCase()]));
+        }
+
         const numericValue = Number(candidate);
         if (Number.isFinite(numericValue)) {
             return Math.min(5, Math.max(0, numericValue));
@@ -21,49 +34,71 @@ const getReviewRating = (review) => {
     return 0;
 };
 
-const normalizeReview = (review, index) => {
-    const author = review?.reviewer?.displayName || review?.author || `Customer ${index + 1}`;
-    const text = review?.comment || review?.text || 'No review text provided.';
-    const rating = getReviewRating(review);
-    const rawDate = review?.createTime || review?.date;
-    const date = rawDate ? new Date(rawDate).toLocaleDateString('en-CA') : 'Recently';
-    const timestamp = rawDate ? new Date(rawDate).getTime() : 0;
-
-    return {
-        author,
-        text,
-        rating,
-        date,
-        timestamp,
-    };
+const getReviewTimestamp = (review) => {
+    const rawDate = review?.createTime || review?.date || review?.time;
+    if (!rawDate) return 0;
+    return new Date(rawDate).getTime();
 };
+
+const getReviewText = (review) => {
+    const normalizeText = (value) => {
+        if (typeof value !== 'string') return '';
+
+        const cleaned = value.trim();
+        const translationMarker = '(Translated by Google)';
+        const markerIndex = cleaned.indexOf(translationMarker);
+
+        if (markerIndex !== -1) {
+            const translatedText = cleaned.slice(markerIndex + translationMarker.length).trim();
+            if (translatedText) {
+                return translatedText;
+            }
+        }
+
+        return cleaned;
+    };
+
+    const commentText = normalizeText(review?.comment);
+    if (commentText) {
+        return commentText;
+    }
+
+    const directText = normalizeText(review?.text);
+    if (directText) {
+        return directText;
+    }
+
+    return 'No review text provided.';
+};
+
+const getReviewAuthor = (review) => review?.author || review?.reviewer?.displayName || 'Customer';
 
 const getRelevanceScore = (review) => {
     const rating = getReviewRating(review);
-    const textLength = (review.text || '').length;
+    const textLength = (getReviewText(review) || '').length;
     const now = Date.now();
-    const daysAgo = review.timestamp ? (now - review.timestamp) / (1000 * 60 * 60 * 24) : 365;
+    const daysAgo = getReviewTimestamp(review) ? (now - getReviewTimestamp(review)) / (1000 * 60 * 60 * 24) : 365;
 
     const ratingWeight = rating * 35;
     const recencyWeight = Math.max(0, 45 - daysAgo * 1.5);
     const detailWeight = Math.min(textLength / 6, 25);
-    const qualityWeight = (review.text && review.text.length > 80 ? 10 : 0);
+    const qualityWeight = (getReviewText(review) && getReviewText(review).length > 80 ? 10 : 0);
 
     return ratingWeight + recencyWeight + detailWeight + qualityWeight;
 };
 
 const sortOptions = {
     relevant: (a, b) => getRelevanceScore(b) - getRelevanceScore(a),
-    newest: (a, b) => (b.timestamp || 0) - (a.timestamp || 0),
+    newest: (a, b) => getReviewTimestamp(b) - getReviewTimestamp(a),
     highest: (a, b) => {
         const ratingDiff = getReviewRating(b) - getReviewRating(a);
         if (ratingDiff !== 0) return ratingDiff;
-        return (b.timestamp || 0) - (a.timestamp || 0);
+        return getReviewTimestamp(b) - getReviewTimestamp(a);
     },
     lowest: (a, b) => {
         const ratingDiff = getReviewRating(a) - getReviewRating(b);
         if (ratingDiff !== 0) return ratingDiff;
-        return (a.timestamp || 0) - (b.timestamp || 0);
+        return getReviewTimestamp(a) - getReviewTimestamp(b);
     },
 };
 
@@ -104,8 +139,14 @@ const Testimonial = () => {
         const fetchReviews = async () => {
             try {
                 const response = await fetch('/.netlify/functions/reviews');
+                const contentType = response.headers.get('content-type') || '';
+
                 if (!response.ok) {
-                    throw new Error('Failed to fetch reviews');
+                    throw new Error(`Failed to fetch reviews: ${response.status}`);
+                }
+
+                if (!contentType.includes('application/json')) {
+                    throw new Error('Reviews endpoint returned HTML instead of JSON. Start Netlify dev on port 8888.');
                 }
 
                 const data = await response.json();
@@ -113,7 +154,7 @@ const Testimonial = () => {
                 const numericAverageRating = Number(data?.averageRating ?? 0);
                 const nextAverageRating = Number.isFinite(numericAverageRating) ? numericAverageRating : 0;
 
-                setReviews(reviewList.map(normalizeReview));
+                setReviews(reviewList);
                 setAverageRating(nextAverageRating);
                 setTotalReviewCount(Number(data?.totalReviewCount ?? reviewList.length ?? 0));
             } catch (error) {
