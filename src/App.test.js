@@ -68,6 +68,59 @@ describe('Testimonial', () => {
     expect(container.querySelectorAll('span[aria-label*="Rating:"]').length).toBeGreaterThan(0);
   });
 
+  test('renders filled stars when Google sends starRating as enum strings', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        averageRating: 5,
+        totalReviewCount: 1,
+        reviews: [
+          {
+            reviewer: { displayName: 'Enum Star User' },
+            comment: 'Great service.',
+            starRating: 'FIVE',
+            createTime: '2024-01-12T00:00:00Z',
+          },
+        ],
+      }),
+    });
+
+    const { container } = render(<Testimonial />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Enum Star User')).toBeInTheDocument();
+    });
+
+    const fills = Array.from(container.querySelectorAll('svg path')).map((path) => path.getAttribute('fill'));
+    expect(fills.every((fill) => fill === '#fbbf24')).toBe(true);
+  });
+
+  test('shows only the translated English review text when Google appends the original language', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        averageRating: 5,
+        totalReviewCount: 1,
+        reviews: [
+          {
+            reviewer: { displayName: 'Bilingual User' },
+            comment: 'मैंने हाल ही में ...\n\n(Translated by Google)\nI recently consulted Dr. Purva Verma.',
+            starRating: 'FIVE',
+            createTime: '2024-01-12T00:00:00Z',
+          },
+        ],
+      }),
+    });
+
+    render(<Testimonial />);
+
+    await waitFor(() => {
+      expect(screen.getByText('I recently consulted Dr. Purva Verma.')).toBeInTheDocument();
+    });
+
+    expect(screen.queryByText(/मैंने हाल ही में/i)).not.toBeInTheDocument();
+  });
+
   test('shows a 4-star review first when sorting by lowest rating', async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,

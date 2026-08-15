@@ -18,6 +18,73 @@ const StarIcon = ({ filled, size = 14 }) => (
 );
 
 const TestimonialCard = ({ review, index }) => {
+    const getReviewAuthor = () => review?.author || review?.reviewer?.displayName || 'Customer';
+    const getReviewText = () => {
+        const normalizeText = (value) => {
+            if (typeof value !== 'string') return '';
+
+            const cleaned = value.trim();
+            const translationMarker = '(Translated by Google)';
+            const markerIndex = cleaned.indexOf(translationMarker);
+
+            if (markerIndex !== -1) {
+                const translatedText = cleaned.slice(markerIndex + translationMarker.length).trim();
+                if (translatedText) {
+                    return translatedText;
+                }
+            }
+
+            return cleaned;
+        };
+
+        const commentText = normalizeText(review?.comment);
+        if (commentText) {
+            return commentText;
+        }
+
+        const directText = normalizeText(review?.text);
+        if (directText) {
+            return directText;
+        }
+
+        return 'No review text provided.';
+    };
+    const getReviewDate = () => {
+        const rawDate = review?.date || review?.createTime || review?.time;
+        return rawDate ? new Date(rawDate).toLocaleDateString('en-CA') : 'Recently';
+    };
+    const getReviewRating = () => {
+        const starEnumMap = {
+            ONE: 1,
+            TWO: 2,
+            THREE: 3,
+            FOUR: 4,
+            FIVE: 5,
+        };
+
+        const candidates = [
+            review?.starRating?.value,
+            review?.starRating,
+            review?.rating,
+            review?.ratingValue,
+            review?.score,
+            review?.stars,
+        ];
+
+        for (const candidate of candidates) {
+            if (typeof candidate === 'string' && starEnumMap[candidate.toUpperCase()]) {
+                return Math.min(5, Math.max(0, starEnumMap[candidate.toUpperCase()]));
+            }
+
+            const numericRating = Number(candidate);
+            if (Number.isFinite(numericRating)) {
+                return Math.min(5, Math.max(0, numericRating));
+            }
+        }
+
+        return 0;
+    };
+
     const renderStars = (rating) => {
         const numericRating = Number.isFinite(Number(rating)) ? Number(rating) : 0;
         const safeRating = Math.min(5, Math.max(0, numericRating));
@@ -44,18 +111,17 @@ const TestimonialCard = ({ review, index }) => {
         >
             <div className="flex items-center mb-4">
                 <div className="font-semibold text-gray-800 mr-2 whitespace-nowrap">
-                    {review.author}
+                    {getReviewAuthor()}
                 </div>
                 <div className="flex items-center">
-                    {renderStars(review.rating)}
+                    {renderStars(getReviewRating())}
                 </div>
             </div>
-            {/* Added max-h-40 and overflow-y-auto to make the text scrollable */}
             <p className="text-gray-700 mb-4 max-h-40 overflow-y-auto pr-2">
-                {review.text}
+                {getReviewText()}
             </p>
             <p className="text-sm text-gray-500 whitespace-nowrap">
-                {review.date}
+                {getReviewDate()}
             </p>
         </motion.div>
     );
