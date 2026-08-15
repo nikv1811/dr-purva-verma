@@ -109,6 +109,9 @@ exports.handler = async function (event, context) {
       nextPageToken = data.nextPageToken || null;
     } while (nextPageToken);
 
+    // Important: do not truncate the review list here.
+    // Google may paginate across many reviews, and the full dataset must be kept
+    // for sorting/filtering and cache refreshes.
     const completePayload = {
       reviews: allReviews,
       averageRating: averageRating,
