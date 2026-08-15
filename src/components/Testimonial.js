@@ -175,37 +175,39 @@ const Testimonial = () => {
                     What Our Customers Say
                 </h2>
 
-                <div className="flex flex-col items-center justify-center mb-6 gap-2">
-                    <div className="flex items-center gap-2 text-lg font-semibold text-gray-800">
-                        <span className="flex items-center gap-1">{renderRatingStars(averageRating)}</span>
-                        <span>{averageRating ? averageRating.toFixed(1) : '0.0'}</span>
-                        <span className="text-sm text-gray-500">/ 5</span>
+                <div className="mb-6 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-8">
+                    <div className="flex flex-wrap gap-2 justify-center xl:justify-start">
+                        {[
+                            { key: 'relevant', label: 'Most relevant' },
+                            { key: 'newest', label: 'Newest' },
+                            { key: 'highest', label: 'Highest rating' },
+                            { key: 'lowest', label: 'Lowest rating' },
+                        ].map((option) => (
+                            <button
+                                key={option.key}
+                                type="button"
+                                onClick={() => setSortBy(option.key)}
+                                className={`rounded-full px-4 py-2 text-sm font-medium border transition ${
+                                    sortBy === option.key
+                                        ? 'bg-emerald-600 text-white border-emerald-600'
+                                        : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-400'
+                                }`}
+                            >
+                                {option.label}
+                            </button>
+                        ))}
                     </div>
-                    <p className="text-sm text-gray-600">
-                        {totalReviewCount || reviews.length} verified reviews
-                    </p>
-                </div>
 
-                <div className="flex flex-wrap gap-2 justify-center mb-6">
-                    {[
-                        { key: 'relevant', label: 'Most relevant' },
-                        { key: 'newest', label: 'Newest' },
-                        { key: 'highest', label: 'Highest rating' },
-                        { key: 'lowest', label: 'Lowest rating' },
-                    ].map((option) => (
-                        <button
-                            key={option.key}
-                            type="button"
-                            onClick={() => setSortBy(option.key)}
-                            className={`rounded-full px-4 py-2 text-sm font-medium border transition ${
-                                sortBy === option.key
-                                    ? 'bg-emerald-600 text-white border-emerald-600'
-                                    : 'bg-white text-gray-700 border-gray-200 hover:border-emerald-400'
-                            }`}
-                        >
-                            {option.label}
-                        </button>
-                    ))}
+                    <div className="flex flex-col items-center xl:items-end">
+                        <div className="flex items-center gap-2 text-lg font-semibold text-gray-800">
+                            <span className="flex items-center gap-1">{renderRatingStars(averageRating)}</span>
+                            <span>{averageRating ? averageRating.toFixed(1) : '0.0'}</span>
+                            <span className="text-sm text-gray-500">/ 5</span>
+                        </div>
+                        <p className="text-sm text-gray-600">
+                            {totalReviewCount || reviews.length} verified reviews
+                        </p>
+                    </div>
                 </div>
 
                 <div
