@@ -71,8 +71,6 @@ const getReviewText = (review) => {
     return 'No review text provided.';
 };
 
-const getReviewAuthor = (review) => review?.author || review?.reviewer?.displayName || 'Customer';
-
 const getRelevanceScore = (review) => {
     const rating = getReviewRating(review);
     const textLength = (getReviewText(review) || '').length;
