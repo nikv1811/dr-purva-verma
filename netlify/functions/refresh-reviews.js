@@ -79,6 +79,8 @@ exports.handler = async function (event, context) {
       nextPageToken = data.nextPageToken || null;
     } while (nextPageToken);
 
+    // Important: do not truncate the review list here.
+    // The cache should retain every paginated review returned by Google.
     const payload = {
       reviews: allReviews,
       averageRating,
