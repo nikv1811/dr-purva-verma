@@ -1,5 +1,5 @@
 // src/components/TestimonialCard.jsx
-// import React from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion'; // Keep framer-motion here for the card animation
 
 const StarIcon = ({ filled, size = 14 }) => (
@@ -18,7 +18,17 @@ const StarIcon = ({ filled, size = 14 }) => (
 );
 
 const TestimonialCard = ({ review, index }) => {
-    const getReviewAuthor = () => review?.author || review?.reviewer?.displayName || 'Customer';
+    const getReviewAuthor = () => {
+        const author = review?.author || review?.reviewer?.displayName;
+        return typeof author === 'string' && author.trim() ? author.trim() : 'Customer';
+    };
+    const getReviewerPhoto = () => {
+        const photo = review?.reviewer?.profilePhotoUrl
+            || review?.reviewer?.profilePhoto
+            || review?.profilePhotoUrl
+            || review?.photoUrl;
+        return typeof photo === 'string' && photo.trim() ? photo.trim() : '';
+    };
     const getReviewText = () => {
         const normalizeText = (value) => {
             if (typeof value !== 'string') return '';
@@ -85,6 +95,10 @@ const TestimonialCard = ({ review, index }) => {
         return 0;
     };
 
+    const reviewerName = getReviewAuthor();
+    const reviewerPhoto = getReviewerPhoto();
+    const [photoFailed, setPhotoFailed] = useState(false);
+
     const renderStars = (rating) => {
         const numericRating = Number.isFinite(Number(rating)) ? Number(rating) : 0;
         const safeRating = Math.min(5, Math.max(0, numericRating));
@@ -110,8 +124,25 @@ const TestimonialCard = ({ review, index }) => {
             transition={{ duration: 0.3, delay: index * 0.1 }}
         >
             <div className="flex items-center mb-4">
+                {reviewerPhoto && !photoFailed ? (
+                    <img
+                        src={reviewerPhoto}
+                        alt={`${reviewerName}'s profile`}
+                        className="w-10 h-10 rounded-full object-cover mr-3 flex-shrink-0"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={() => setPhotoFailed(true)}
+                    />
+                ) : (
+                    <div
+                        className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-semibold mr-3 flex-shrink-0"
+                        aria-hidden="true"
+                    >
+                        {reviewerName.charAt(0).toUpperCase()}
+                    </div>
+                )}
                 <div className="font-semibold text-gray-800 mr-2 whitespace-nowrap">
-                    {getReviewAuthor()}
+                    {reviewerName}
                 </div>
                 <div className="flex items-center">
                     {renderStars(getReviewRating())}

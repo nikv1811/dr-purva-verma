@@ -137,14 +137,9 @@ const Testimonial = () => {
         const fetchReviews = async () => {
             try {
                 const response = await fetch('/.netlify/functions/reviews');
-                const contentType = response.headers.get('content-type') || '';
 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch reviews: ${response.status}`);
-                }
-
-                if (!contentType.includes('application/json')) {
-                    throw new Error('Reviews endpoint returned HTML instead of JSON. Start Netlify dev on port 8888.');
                 }
 
                 const data = await response.json();
