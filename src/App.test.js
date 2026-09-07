@@ -5,6 +5,7 @@ describe('Testimonial', () => {
   beforeEach(() => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
+      headers: { get: () => 'application/json' },
       json: async () => ({
         averageRating: 5,
         totalReviewCount: 1,
@@ -32,6 +33,35 @@ describe('Testimonial', () => {
     });
 
     expect(await screen.findByText('Alice Johnson')).toBeInTheDocument();
+  });
+
+  test('renders the reviewer profile photo when Google provides one', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      headers: { get: () => 'application/json' },
+      json: async () => ({
+        averageRating: 5,
+        totalReviewCount: 1,
+        reviews: [
+          {
+            reviewer: {
+              displayName: 'Photo Reviewer',
+              profilePhotoUrl: 'https://example.com/photo.jpg',
+            },
+            comment: 'Wonderful care.',
+            starRating: { value: 5 },
+            createTime: '2024-01-02T00:00:00Z',
+          },
+        ],
+      }),
+    });
+
+    render(<Testimonial />);
+
+    expect(await screen.findByAltText("Photo Reviewer's profile")).toHaveAttribute(
+      'src',
+      'https://example.com/photo.jpg'
+    );
   });
 
   test('shows the aggregate average rating from the API', async () => {
