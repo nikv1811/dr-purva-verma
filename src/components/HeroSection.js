@@ -44,7 +44,7 @@ const HeroSection = () => {
                     <div className="p-6 md:p-8 flex-grow"> {/* Removed flex items-center justify-center */}
                         {/* Bullet points for qualifications and expertise */}
                         <ul className="pl-7 list-disc list-outside text-lg md:text-xl text-gray-700 space-y-2 text-left"> {/* Styled unordered list */}
-                            <li>Ayurvedic expert with {new Date().getFullYear() - 2018}+ years of experience</li>
+                            <li>Ayurvedic expert with {new Date().getFullYear() - 2017}+ years of experience</li>
                             <li>Gold medallist from Sri Sri College of Ayurvedic Science and Medical Research</li>
                             <li>Specializations include Garbhasanskara, Naturopathy, and Nadi Parikshana</li>
                             <li>Offers personalized Ayurvedic remedies and guidance</li>
