@@ -3,7 +3,7 @@ import React from 'react';
 const faqs = [
     {
         question: 'What are Dr. Purva Verma\'s medical qualifications and experience?',
-        answer: 'Dr. Purva Verma is a premier Gold Medalist graduate from the prestigious Sri Sri College of Ayurvedic Science and Research Hospital. She holds a BAMS and MD in Ayurveda with over 8 years of specialized clinical experience in root-cause healing, pulse diagnosis, and advanced Panchakarma.'
+        answer: 'Dr. Purva Verma is a premier graduate from the prestigious Sri Sri College of Ayurvedic Science and Research Hospital. She holds a BAMS and MD in Ayurveda with over 8 years of specialized clinical experience in root-cause healing, pulse diagnosis, and advanced Panchakarma.'
     },
     {
         question: 'Where is Swasthyaveda Healthcare clinic located in Kolkata?',
